@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,7 +16,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisallowComposableCalls
@@ -31,14 +36,37 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JetpackComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Surface(color = MaterialTheme.colorScheme.background){
+                    ButtonText()
+                }
+                /*Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
-                }
+                }*/
             }
         }
+    }
+}
+//@Preview(showBackground = true, widthDp = 200, heightDp = 100)
+@Composable
+fun ButtonText() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = "Hello Android!",
+            modifier = Modifier
+                .clickable() { /*TODO*/}
+                .background(Color.Cyan)
+                .border(width = 2.dp, color = Color.Blue)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+
+
+
+        )
     }
 }
 @Preview(showBackground = true)
@@ -53,7 +81,15 @@ fun MediaItem() {
         ) {
 
         }
-        Text("Title 1")
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color(0xFF02D7F8))
+                .padding(16.dp)
+        ) {
+            Text("Title 1")
+        }
+
     }
 }
 
@@ -65,13 +101,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     JetpackComposeTheme {
         Greeting("Android")
     }
 }
+
+
 
 /*@Preview(showBackground = true, name ="Android Greeting",
     widthDp = 400, heightDp = 100)*/
