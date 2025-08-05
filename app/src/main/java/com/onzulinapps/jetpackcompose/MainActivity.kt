@@ -25,9 +25,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisallowComposableCalls
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import com.onzulinapps.jetpackcompose.ui.theme.JetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,7 +60,58 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-//@Preview(showBackground = true, widthDp = 200, heightDp = 100)
+@Preview(showBackground = true, widthDp = 200, heightDp = 100)
+@Composable
+fun ButtonText() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = stringResource(id = R.string.lorem),
+            color = Color(0xFFF701FF),
+            fontSize = 15.sp,
+            fontWeight = FontWeight.W400,
+            letterSpacing = 1.sp,
+            textAlign = TextAlign.Left,
+            lineHeight = 2.em,
+            maxLines = 2,
+            
+            overflow = TextOverflow.Ellipsis
+
+
+
+
+
+        )
+    }
+}
+@Preview(showBackground = true, widthDp = 200, heightDp = 100)
+@Composable
+fun ButtonText2() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = "Hello World",
+            style = MaterialTheme.typography.bodyMedium.copy(
+                shadow = Shadow(
+                    offset = Offset(10f, 10f),
+                    blurRadius = 10f,
+                    color = Color.Black.copy(alpha = 0.8f)
+                )
+            )
+
+
+
+
+
+
+        )
+    }
+}
+/*@Preview(showBackground = true, widthDp = 200, heightDp = 100)
 @Composable
 fun ButtonText() {
     Box(
@@ -59,7 +121,7 @@ fun ButtonText() {
         Text(
             text = "Hello Android!",
             modifier = Modifier
-                .clickable() { /*TODO*/}
+                .clickable() { TODO}
                 .background(Color.Cyan)
                 .border(width = 2.dp, color = Color.Blue)
                 .padding(horizontal = 16.dp, vertical = 8.dp)
@@ -68,8 +130,8 @@ fun ButtonText() {
 
         )
     }
-}
-@Preview(showBackground = true)
+}*/
+//@Preview(showBackground = true)
 @Composable
 fun MediaItem() {
     Column() {
